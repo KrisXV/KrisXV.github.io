@@ -13,6 +13,8 @@ app.controller('bracketCtrl', function($scope) {
 	
 	var length = 0; //the number of pairings that need to be created
 	var receivedBye = []; //list of players that received a bye
+	var originalPlayerList = []; //original list of players that was put in at the start
+	var currentRoundPlayerList = []; //list of players that was used to generate current round
 	
 	
 	//This method will generate random pairings from the
@@ -24,6 +26,7 @@ app.controller('bracketCtrl', function($scope) {
 		}
 		if($scope.initial){
 			$scope.initialPlayerCount = $scope.players.length;
+			originalPlayerList = angular.copy($scope.players);
 		}
 		var roundPairings = [];
 		$scope.initial = false;
@@ -64,6 +67,7 @@ app.controller('bracketCtrl', function($scope) {
 		}
 		if($scope.arrayReset){
 			$scope.pairings.push(angular.copy(roundPairings));
+			currentRoundPlayerList = angular.copy($scope.players);
 		} else {
 			$scope.pairings[$scope.pairings.length-1] = angular.copy(roundPairings);
 		}
@@ -129,6 +133,19 @@ app.controller('bracketCtrl', function($scope) {
 		$scope.arrayReset = true;
 		$scope.initial = true;
 		$scope.subMessage = '';
+		currentRoundPlayerList = [];
+	}
+	
+	$scope.resetToOriginal = function() {
+		$scope.resetPlayers();
+		$scope.players = angular.copy(originalPlayerList);
+		originalPlayerList = [];
+	}
+	
+	$scope.remakePairings = function() {
+		$scope.arrayReset = false;
+		$scope.players = angular.copy(currentRoundPlayerList);
+		$scope.makePairings();
 	}
 	
 	//subs a player out from the tournament, if they have an incomplete match in a previous round it will

@@ -16,6 +16,10 @@
 				<textarea data-ng-model="players" data-ng-list="&#10;" data-ng-trim="false"></textarea>
 			</div>
 			<div data-ng-show="!initial">
+				<div class="buttons">
+					<button data-ng-click="resetPlayers()">Reset</button>
+					<button data-ng-click="resetToOriginal()">Reset to Original Players</button>
+				</div>
 				<div data-ng-show="arrayReset">	
 					<h2>Winners:</h2>
 					<div class="DivToScroll DivWithScroll">
@@ -35,7 +39,7 @@
 			</div>
 			<div class="buttons">
 				<button data-ng-click="makePairings()">Generate Pairings</button>
-				<button data-ng-click="resetPlayers()">Reset</button>
+				<button data-ng-click="remakePairings()">Remake Pairings</button>
 			</div>
 			<div data-ng-show="!initial">
 			<div data-ng-if="incompleteMatches">
