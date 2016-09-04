@@ -175,11 +175,11 @@ app.controller('bracketCtrl', function($scope) {
 								currentPairing[1].name = postCombined;
 							}
 							currentRoundPlayerList[currentRoundPlayerList.indexOf(preCombined)] = postCombined;
-							$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
-							$scope.subIn = '';
-							$scope.subOut = '';
-							subSuccess = true;
 						}
+						$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
+						$scope.subIn = '';
+						$scope.subOut = '';
+						subSuccess = true;
 					}
 					if(pairing[1].name === $scope.subOut){
 						pairing[1].name = $scope.subIn;
@@ -194,11 +194,11 @@ app.controller('bracketCtrl', function($scope) {
 								currentPairing[1].name = postCombined;
 							}
 							currentRoundPlayerList[currentRoundPlayerList.indexOf(preCombined)] = postCombined;
-							$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
-							$scope.subIn = '';
-							$scope.subOut = '';
-							subSuccess = true;
 						}
+						$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
+						$scope.subIn = '';
+						$scope.subOut = '';
+						subSuccess = true;
 					}
 				}
 			}
@@ -305,9 +305,9 @@ app.controller('bracketCtrl', function($scope) {
 			return length = 96;
 		} else if(231<=arrayLength && arrayLength<=345){
 			return length = 128;
-		} else if(346<=arrayLength && arrayLength<=466){
+		} else if(346<=arrayLength && arrayLength<=460){
 			return length = 192;
-		} else if(467<=arrayLength && arrayLength<=691){
+		} else if(461<=arrayLength && arrayLength<=691){
 			return length = 256;
 		} else if(692<=arrayLength<=921){
 			return length = 384;
