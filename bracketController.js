@@ -154,6 +154,7 @@ app.controller('bracketCtrl', function($scope) {
 	//sub them out from it as well
 	$scope.makeSub = function() {
 		var currentRound = $scope.pairings[$scope.pairings.length-1];
+		var subSuccess = false;
 		//sub out from previous round
 		if($scope.incompleteMatches){
 			var preRound = $scope.pairings[$scope.pairings.length-2];
@@ -177,6 +178,7 @@ app.controller('bracketCtrl', function($scope) {
 							$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
 							$scope.subIn = '';
 							$scope.subOut = '';
+							subSuccess = true;
 						}
 					}
 					if(pairing[1].name === $scope.subOut){
@@ -195,6 +197,7 @@ app.controller('bracketCtrl', function($scope) {
 							$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
 							$scope.subIn = '';
 							$scope.subOut = '';
+							subSuccess = true;
 						}
 					}
 				}
@@ -212,8 +215,14 @@ app.controller('bracketCtrl', function($scope) {
 				}
 				$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
 				pairing[0].name = $scope.subIn;
+				if(currentRoundPlayerList.indexOf($scope.subOut) === -1){
+					currentRoundPlayerList.push($scope.subIn);
+				} else {
+					currentRoundPlayerList[currentRoundPlayerList.indexOf($scope.subOut)] = $scope.subIn;
+				}
 				$scope.subIn = '';
 				$scope.subOut = '';
+				subSuccess = true;
 			}
 			if(pairing[1].name === $scope.subOut){
 				if(pairing[1].won){
@@ -225,11 +234,19 @@ app.controller('bracketCtrl', function($scope) {
 				}
 				$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
 				pairing[1].name = $scope.subIn;
+				if(currentRoundPlayerList.indexOf($scope.subOut) === -1){
+					currentRoundPlayerList.push($scope.subIn);
+				} else {
+					currentRoundPlayerList[currentRoundPlayerList.indexOf($scope.subOut)] = $scope.subIn;
+				}
 				$scope.subIn = '';
 				$scope.subOut = '';
+				subSuccess = true;
 			}
 		}
-		$scope.subMessage = 'No one by the name of ' + $scope.subOut + ' could be found to sub out';
+		if(!subSuccess){
+				$scope.subMessage = 'No one by the name of ' + $scope.subOut + ' could be found to sub out';
+		}
 	}
 	
 	//removes excess players from the list on a first come first serve basis
