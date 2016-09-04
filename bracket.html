@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="bracketController.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bracket.css">
+	<head>
+		<title>Bracket Maker</title>
+	</head>
+	<body data-ng-app="bracketApp">
+		<div data-ng-controller="bracketCtrl">
+			<h1>Smogon Bracket Maker</h1>
+			<div data-ng-show="initial">
+				<h2>Players:</h2>
+				<textarea data-ng-model="players" data-ng-list="&#10;" data-ng-trim="false"></textarea>
+			</div>
+			<div data-ng-show="!initial">
+				<div data-ng-show="arrayReset">	
+					<h2>Winners:</h2>
+					<div class="DivToScroll DivWithScroll">
+						<ul>
+							<li data-ng-repeat="x in players">{{x}}</li>
+						</ul>
+					</div>
+				</div>
+				<div data-ng-show="!arrayReset">	
+					<h2>Players:</h2>
+					<div class="DivToScroll DivWithScroll">
+						<ul>
+							<li data-ng-repeat="x in players">{{x}}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="buttons">
+				<button data-ng-click="makePairings()">Generate Pairings</button>
+				<button data-ng-click="resetPlayers()">Reset</button>
+			</div>
+			<div data-ng-show="!initial">
+			<div data-ng-if="incompleteMatches">
+    			<h3>Uncompleted Matches From Previous Round</h3>
+    			<ul>
+    				<li data-ng-repeat="pair in pairings[pairings.length-2]" data-ng-if="!pair[0].won && !pair[1].won">
+    					<span data-ng-if="pair[0].won">
+        					<b>{{pair[0].name}}</b>
+        				</span>
+        				<span data-ng-if="!pair[0].won">
+        					<a href="" data-ng-click="incompleteMatchWon(pair[0], pair[1])">{{pair[0].name}}</a>
+        				</span>
+        				vs.
+        				<span data-ng-if="pair[1].won">
+        					<b>{{pair[1].name}}</b>
+        				</span>
+        				<span data-ng-if="!pair[1].won">
+        					<a href="" data-ng-click="incompleteMatchWon(pair[1], pair[0])">{{pair[1].name}}</a>
+        				</span>
+    				</li>
+    			</ul>
+    		</div>
+			<h2>Pairings:</h2>
+			<ul>
+        		<li data-ng-repeat="pair in pairings[pairings.length-1]">
+        			<span data-ng-if="pair[0].won">
+        				<b>{{pair[0].name}}</b>
+        			</span>
+        			<span data-ng-if="!pair[0].won">
+        				<a href="" data-ng-click="playerWon(pair[0], pair[1])">{{pair[0].name}}</a>
+        			</span>
+        			vs.
+        			<span data-ng-if="pair[1].won">
+        				<b>{{pair[1].name}}</b>
+        			</span>
+        			<span data-ng-if="!pair[1].won">
+        				<a href="" data-ng-click="playerWon(pair[1], pair[0])">{{pair[1].name}}</a>
+        			</span>
+        		</li>
+    		</ul>
+			Sub In: <input type="text" data-ng-model="subIn"><br>
+			Sub Out: <input type="text" data-ng-model="subOut"><br>
+			<button data-ng-click="makeSub()">Make Substitution</button> {{subMessage}}
+    		<br/>
+    		Number Of Current Pairings: {{pairings[pairings.length-1].length}}<br/>
+    		Initial Player Count: {{initialPlayerCount}}<br/>
+    		<div data-ng-show="discardedPlayers.length>0">
+    			Unused Players: {{discardedPlayers}}
+    		</div>
+    		<h2>BBCode for use on forum</h2>
+    		<div class="DivToScroll DivWithScroll">
+    			<div data-ng-repeat="round in pairings">
+    				Round {{pairings.indexOf(round)+1}}<br/>
+    				</br>
+    				<div data-ng-repeat="pair in round">
+    					<span data-ng-if="pair[0].won">
+    						[b]@{{pair[0].name}}[/b]
+    					</span>
+    					<span data-ng-if="!pair[0].won">
+    						@{{pair[0].name}}
+    					</span>
+    					vs.
+    					<span data-ng-if="pair[1].won">
+    						[b]@{{pair[1].name}}[/b]
+    					</span>
+    					<span data-ng-if="!pair[1].won">
+    						@{{pair[1].name}}
+    					</span>
+    				</div>
+    				<br/>
+    			</div>
+    		</div>
+		</div>
+		</div>
+	</body>
+</html>

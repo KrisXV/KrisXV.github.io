@@ -1,0 +1,39 @@
+textarea {
+	height: 300px;
+	width: 300px;
+}
+
+input {
+	margin-bottom:5px;
+}
+
+body {
+	margin: 10px;
+}
+
+div.buttons{
+	margin-top:10px
+}
+
+button {
+	margin-bottom:10px;
+}
+
+
+div.DivToScroll {   
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #3B3C3E;
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 10px 7px 5px;
+}
+
+div.DivWithScroll {
+    height: 300px;
+    width: 300px;
+    overflow:scroll;
+    overflow-x:hidden;
+}
