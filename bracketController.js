@@ -100,10 +100,12 @@ app.controller('bracketCtrl', function($scope) {
 		winner.won = true;
 		for(i=0;i<$scope.players.length;i++){
 			if($scope.players[i] === combined1){
+				currentRoundPlayerList[currentRoundPlayerList.indexOf(combined1)] = winner.name;
 				$scope.players[i] = winner.name;
 			}
 			if($scope.players[i] === combined2){
 				$scope.players[i] = winner.name;
+				currentRoundPlayerList[currentRoundPlayerList.indexOf(combined2)] = winner.name;
 			}	
 		}
 		
@@ -160,36 +162,40 @@ app.controller('bracketCtrl', function($scope) {
 				if(!pairing[0].won && !pairing[1].won){ //if match was an incomplete match
 					if(pairing[0].name === $scope.subOut){ //if the first player is the sub
 						pairing[0].name = $scope.subIn;
-						$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
-						$scope.subIn = '';
-						$scope.subOut = '';
-						//lops through next rounds pairings and changes the subs name
+						//loops through next rounds pairings and changes the subs name
 						for(i=0;i<currentRound.length;i++){
 							var currentPairing = currentRound[i];
 							var preCombined = '(' + $scope.subOut + ' vs ' + pairing[1].name + ')';
+							var postCombined = '(' + pairing[0].name + ' vs ' + pairing[1].name + ')';
 							if(currentPairing[0].name === preCombined){
-								currentPairing[0].name = '(' + pairing[0].name + ' vs ' + pairing[1].name + ')';
+								currentPairing[0].name = postCombined;
 							}
 							if(currentPairing[1].name === preCombined){
-								currentPairing[1].name = '(' + pairing[0].name + ' vs ' + pairing[1].name + ')';
+								currentPairing[1].name = postCombined;
 							}
+							currentRoundPlayerList[currentRoundPlayerList.indexOf(preCombined)] = postCombined;
+							$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
+							$scope.subIn = '';
+							$scope.subOut = '';
 							return;
 						}
 					}
 					if(pairing[1].name === $scope.subOut){
 						pairing[1].name = $scope.subIn;
-						$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
-						$scope.subIn = '';
-						$scope.subOut = '';
 						for(i=0;i<currentRound.length;i++){
 							var currentPairing = currentRound[i];
 							var preCombined = '(' + pairing[0].name + ' vs ' + $scope.subOut + ')';
+							var postCombined = '(' + pairing[0].name + ' vs ' + pairing[1].name + ')';
 							if(currentPairing[0].name === preCombined){
-								currentPairing[1].name = '(' + pairing[0].name + ' vs ' + pairing[1].name + ')';
+								currentPairing[0].name = postCombined;
 							}
 							if(currentPairing[1].name === preCombined){
-								currentPairing[1].name = '(' + pairing[0].name + ' vs ' + pairing[1].name + ')';
+								currentPairing[1].name = postCombined;
 							}
+							currentRoundPlayerList[currentRoundPlayerList.indexOf(preCombined)] = postCombined;
+							$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
+							$scope.subIn = '';
+							$scope.subOut = '';
 							return;
 						}
 					}
