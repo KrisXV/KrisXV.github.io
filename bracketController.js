@@ -177,7 +177,6 @@ app.controller('bracketCtrl', function($scope) {
 							$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
 							$scope.subIn = '';
 							$scope.subOut = '';
-							return;
 						}
 					}
 					if(pairing[1].name === $scope.subOut){
@@ -196,7 +195,6 @@ app.controller('bracketCtrl', function($scope) {
 							$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
 							$scope.subIn = '';
 							$scope.subOut = '';
-							return;
 						}
 					}
 				}
@@ -216,7 +214,6 @@ app.controller('bracketCtrl', function($scope) {
 				pairing[0].name = $scope.subIn;
 				$scope.subIn = '';
 				$scope.subOut = '';
-				return;
 			}
 			if(pairing[1].name === $scope.subOut){
 				if(pairing[1].won){
@@ -230,7 +227,6 @@ app.controller('bracketCtrl', function($scope) {
 				pairing[1].name = $scope.subIn;
 				$scope.subIn = '';
 				$scope.subOut = '';
-				return;
 			}
 		}
 		$scope.subMessage = 'No one by the name of ' + $scope.subOut + ' could be found to sub out';

@@ -39,7 +39,9 @@
 			</div>
 			<div class="buttons">
 				<button data-ng-click="makePairings()">Generate Pairings</button>
-				<button data-ng-click="remakePairings()">Remake Pairings</button>
+				<div data-ng-show="!initial">
+					<button data-ng-click="remakePairings()">Remake Pairings</button>
+				</div>
 			</div>
 			<div data-ng-show="!initial">
 			<div data-ng-if="incompleteMatches">
