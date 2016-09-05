@@ -101,22 +101,42 @@
     				Round {{pairings.indexOf(round)+1}}<br/>
     				</br>
     				<div data-ng-repeat="pair in round">
-    					<span data-ng-if="pair[0].won">
-    						[b]@{{pair[0].name}}[/b]
-    					</span>
-    					<span data-ng-if="!pair[0].won">
-    						@{{pair[0].name}}
-    					</span>
-    					vs.
-    					<span data-ng-if="pair[1].won">
-    						[b]@{{pair[1].name}}[/b]
-    					</span>
-    					<span data-ng-if="!pair[1].won">
-    						@{{pair[1].name}}
-    					</span>
+    					<div data-ng-if="tagPlayers">
+    						<span data-ng-if="pair[0].won">
+    							[b]@{{pair[0].name}}[/b]
+    						</span>
+    						<span data-ng-if="!pair[0].won">
+    							@{{pair[0].name}}
+    						</span>
+    						vs.
+    						<span data-ng-if="pair[1].won">
+    							[b]@{{pair[1].name}}[/b]
+    						</span>
+    						<span data-ng-if="!pair[1].won">
+    							@{{pair[1].name}}
+    						</span>
+    					</div>
+    					<div data-ng-if="!tagPlayers">
+    						<span data-ng-if="pair[0].won">
+    							[b]{{pair[0].name}}[/b]
+    						</span>
+    						<span data-ng-if="!pair[0].won">
+    							{{pair[0].name}}
+    						</span>
+    						vs.
+    						<span data-ng-if="pair[1].won">
+    							[b]{{pair[1].name}}[/b]
+    						</span>
+    						<span data-ng-if="!pair[1].won">
+    							{{pair[1].name}}
+    						</span>
+    					</div>
     				</div>
     				<br/>
     			</div>
+    		</div>
+    		<div>
+    			Tag Players: <input type="checkbox" ng-model="tagPlayers"></input>
     		</div>
 		</div>
 		</div>

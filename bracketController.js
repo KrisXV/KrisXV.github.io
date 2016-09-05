@@ -10,6 +10,7 @@ app.controller('bracketCtrl', function($scope) {
 	$scope.incompleteMatches = false;
 	$scope.discardedPlayers = [];
 	$scope.initialPlayerCount = 0;
+	$scope.tagPlayers = false;
 	
 	var length = 0; //the number of pairings that need to be created
 	var receivedBye = []; //list of players that received a bye
