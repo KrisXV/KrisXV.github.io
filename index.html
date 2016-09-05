@@ -39,9 +39,12 @@
 				</div>
 			</div>
 			<div class="buttons">
-				<button data-ng-click="makePairings()">Generate Pairings</button>
+				<span data-ng-show="initial">
+					<button data-ng-click="makePairings()">Generate Pairings</button>
+				</span>
 				<span data-ng-show="!initial">
-					<button data-ng-click="remakePairings()">Remake Pairings</button>
+					<button data-ng-click="makePairings()">Make New Round</button>
+					<button data-ng-click="remakePairings()">Remake Current Round</button>
 				</span>
 			</div>
 			<div data-ng-show="!initial">

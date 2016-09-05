@@ -161,6 +161,15 @@ app.controller('bracketCtrl', function($scope) {
 			for(i=0;i<preRound.length;i++){
 				var pairing = preRound[i];
 				if(!pairing[0].won && !pairing[1].won){ //if match was an incomplete match
+					if(pairing[0].name === $scope.subIn || pairing[1].name === $scope.subIn){
+						$scope.subMessage = $scope.subIn + ' is already in the tour';
+						return
+					}
+				}
+			}
+			for(i=0;i<preRound.length;i++){
+				var pairing = preRound[i];
+				if(!pairing[0].won && !pairing[1].won){ //if match was an incomplete match
 					if(pairing[0].name === $scope.subOut){ //if the first player is the sub
 						pairing[0].name = $scope.subIn;
 						//loops through next rounds pairings and changes the subs name
@@ -201,6 +210,13 @@ app.controller('bracketCtrl', function($scope) {
 						subSuccess = true;
 					}
 				}
+			}
+		}
+		for(i=0;i<currentRound.length;i++){
+			var pairing = currentRound[i];
+			if(pairing[0].name === $scope.subIn || pairing[1].name === $scope.subIn){
+				$scope.subMessage = $scope.subIn + ' is already in the tour';
+				return
 			}
 		}
 		for(i=0;i<currentRound.length;i++){
