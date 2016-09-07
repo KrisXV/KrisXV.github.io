@@ -14,7 +14,9 @@
 				<h2>Players:</h2>
 				Current Size: {{players.length}}<br/>
 				(Each Player Should Be On A Separate Line)<br/>
-				<textarea data-ng-model="players" data-ng-list="&#10;" data-ng-trim="false"></textarea>
+				<textarea data-ng-model="players" data-ng-list="&#10;" data-ng-trim="false"></textarea><br/>
+				First Come First Serve: <input type="checkbox" data-ng-model="useSimplePlayerList"></input>
+				First 5/8ths Guaranteed: <input type="checkbox" data-ng-model="useSimplePlayerList" data-ng-true-value="false" data-ng-false-value="true"></input>
 			</div>
 			<div data-ng-show="!initial">
 				<div class="buttons">
@@ -44,7 +46,6 @@
 				</span>
 				<span data-ng-show="!initial">
 					<button data-ng-click="makePairings()">Make New Round</button>
-					<button data-ng-click="remakePairings()">Remake Current Round</button>
 				</span>
 			</div>
 			<div data-ng-show="!initial">

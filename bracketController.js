@@ -11,6 +11,7 @@ app.controller('bracketCtrl', function($scope) {
 	$scope.discardedPlayers = [];
 	$scope.initialPlayerCount = 0;
 	$scope.tagPlayers = false;
+	$scope.useSimplePlayerList = true;
 	
 	var length = 0; //the number of pairings that need to be created
 	var receivedBye = []; //list of players that received a bye
@@ -36,7 +37,11 @@ app.controller('bracketCtrl', function($scope) {
 		determineLength($scope.players.length);
 		//check if player list is too large
 		if(length*2<$scope.players.length){
-			removePlayersSimple();
+			if($scope.useSimplePlayerList){
+				removePlayersSimple();
+			} else {
+				removePlayersComplicated();
+			}
 		}
 		var playerList = angular.copy($scope.players);
 		var numberOfByes = length*2-playerList.length;
@@ -137,12 +142,14 @@ app.controller('bracketCtrl', function($scope) {
 		currentRoundPlayerList = [];
 	}
 	
+	//resets the tournament with the original playerlist
 	$scope.resetToOriginal = function() {
 		$scope.resetPlayers();
 		$scope.players = angular.copy(originalPlayerList);
 		originalPlayerList = [];
 	}
 	
+	//removed because of potential of abuse from tour hosts
 	$scope.remakePairings = function() {
 		$scope.arrayReset = false;
 		$scope.players = angular.copy(currentRoundPlayerList);
@@ -274,6 +281,21 @@ app.controller('bracketCtrl', function($scope) {
 		for(i=$scope.players.length;i>length*2;i--){
 			$scope.discardedPlayers.push($scope.players.pop());
 		}
+	}
+	
+	//removes excess players on a first 5/8ths in last 3/8ths random basis
+	var removePlayersComplicated = function(){
+		if($scope.players.length>length*2){
+			while($scope.players.length>length*2*5/8){
+				$scope.discardedPlayers.push($scope.players.pop());
+			}
+			while($scope.players.length<length*2){
+				var x = Math.floor(Math.random() * $scope.discardedPlayers.length);
+				$scope.players.push($scope.discardedPlayers[x]);
+				$scope.discardedPlayers.splice(x, 1);
+			}
+		}
+		
 	}
 	
 	//adds pairings with no winner to the next round
