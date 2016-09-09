@@ -27,6 +27,9 @@ app.controller('bracketCtrl', function($scope) {
 			addUnfinishedMatches();
 		}
 		if($scope.initial){
+			for(i=0; i<$scope.players.length; i++){
+				$scope.players[i] = $scope.players[i].trim();
+			}
 			$scope.initialPlayerCount = $scope.players.length;
 			originalPlayerList = angular.copy($scope.players);
 		}
@@ -273,7 +276,6 @@ app.controller('bracketCtrl', function($scope) {
 		if(!subSuccess){
 				$scope.subMessage = 'No one by the name of ' + $scope.subOut + ' could be found to sub out';
 		}
-		console.log(currentRoundPlayerList);
 	}
 	
 	//removes excess players from the list on a first come first serve basis

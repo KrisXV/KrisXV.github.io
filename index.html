@@ -14,7 +14,7 @@
 				<h2>Players:</h2>
 				Current Size: {{players.length}}<br/>
 				(Each Player Should Be On A Separate Line)<br/>
-				<textarea data-ng-model="players" data-ng-list="&#10;" data-ng-trim="false"></textarea><br/>
+				<textarea id="playerTextArea" data-ng-model="players" data-ng-list="&#10;" data-ng-trim="false"></textarea><br/>
 				First Come First Serve: <input type="checkbox" data-ng-model="useSimplePlayerList"></input><br/>
 				First 5/8ths Guaranteed: <input type="checkbox" data-ng-model="useSimplePlayerList" data-ng-true-value="false" data-ng-false-value="true"></input><br/>
 			</div>
@@ -49,97 +49,97 @@
 				</span>
 			</div>
 			<div data-ng-show="!initial">
-			<div data-ng-if="incompleteMatches">
-    			<h3>Uncompleted Matches From Previous Round</h3>
-    			<ul>
-    				<li data-ng-repeat="pair in pairings[pairings.length-2]" data-ng-if="!pair[0].won && !pair[1].won">
-    					<span data-ng-if="pair[0].won">
+				<div data-ng-if="incompleteMatches">
+    				<h3>Uncompleted Matches From Previous Round</h3>
+    				<ul>
+    					<li data-ng-repeat="pair in pairings[pairings.length-2]" data-ng-if="!pair[0].won && !pair[1].won">
+    						<span data-ng-if="pair[0].won">
+        						<b>{{pair[0].name}}</b>
+        					</span>
+        					<span data-ng-if="!pair[0].won">
+        						<a href="" data-ng-click="incompleteMatchWon(pair[0], pair[1])">{{pair[0].name}}</a>
+        					</span>
+        					vs.
+        					<span data-ng-if="pair[1].won">
+        						<b>{{pair[1].name}}</b>
+        					</span>
+        					<span data-ng-if="!pair[1].won">
+        						<a href="" data-ng-click="incompleteMatchWon(pair[1], pair[0])">{{pair[1].name}}</a>
+        					</span>
+ 		   				</li>
+    				</ul>
+    			</div>
+				<h2>Pairings:</h2>
+				<ul>
+        			<li data-ng-repeat="pair in pairings[pairings.length-1]">
+        				<span data-ng-if="pair[0].won">
         					<b>{{pair[0].name}}</b>
         				</span>
         				<span data-ng-if="!pair[0].won">
-        					<a href="" data-ng-click="incompleteMatchWon(pair[0], pair[1])">{{pair[0].name}}</a>
+        					<a href="" data-ng-click="playerWon(pair[0], pair[1])">{{pair[0].name}}</a>
         				</span>
         				vs.
         				<span data-ng-if="pair[1].won">
         					<b>{{pair[1].name}}</b>
         				</span>
         				<span data-ng-if="!pair[1].won">
-        					<a href="" data-ng-click="incompleteMatchWon(pair[1], pair[0])">{{pair[1].name}}</a>
+        					<a href="" data-ng-click="playerWon(pair[1], pair[0])">{{pair[1].name}}</a>
         				</span>
-    				</li>
+        			</li>
     			</ul>
-    		</div>
-			<h2>Pairings:</h2>
-			<ul>
-        		<li data-ng-repeat="pair in pairings[pairings.length-1]">
-        			<span data-ng-if="pair[0].won">
-        				<b>{{pair[0].name}}</b>
-        			</span>
-        			<span data-ng-if="!pair[0].won">
-        				<a href="" data-ng-click="playerWon(pair[0], pair[1])">{{pair[0].name}}</a>
-        			</span>
-        			vs.
-        			<span data-ng-if="pair[1].won">
-        				<b>{{pair[1].name}}</b>
-        			</span>
-        			<span data-ng-if="!pair[1].won">
-        				<a href="" data-ng-click="playerWon(pair[1], pair[0])">{{pair[1].name}}</a>
-        			</span>
-        		</li>
-    		</ul>
-			Sub In: <input type="text" data-ng-model="subIn"><br>
-			Sub Out: <input type="text" data-ng-model="subOut"><br>
-			<button data-ng-click="makeSub()">Make Substitution</button> {{subMessage}}
-    		<br/>
-    		Number Of Current Pairings: {{pairings[pairings.length-1].length}}<br/>
-    		Initial Player Count: {{initialPlayerCount}}<br/>
-    		<div data-ng-show="discardedPlayers.length>0">
+				Sub In: <input type="text" data-ng-model="subIn"><br>
+				Sub Out: <input type="text" data-ng-model="subOut"><br>
+				<button data-ng-click="makeSub()">Make Substitution</button> {{subMessage}}
+    			<br/>
+    			Number Of Current Pairings: {{pairings[pairings.length-1].length}}<br/>
+    			Initial Player Count: {{initialPlayerCount}}<br/>
+    			<div data-ng-show="discardedPlayers.length>0">
     			Unused Players: {{discardedPlayers}}
-    		</div>
-    		<h2>BBCode for use on forum</h2>
-    		<div class="DivToScroll DivWithScroll">
-    			<div data-ng-repeat="round in pairings">
-    				[b]Round {{pairings.indexOf(round)+1}}[/b]<br/>
-    				</br>
-    				<div data-ng-repeat="pair in round">
-    					<div data-ng-if="tagPlayers">
-    						<span data-ng-if="pair[0].won">
-    							[b]@{{pair[0].name}}[/b]
-    						</span>
-    						<span data-ng-if="!pair[0].won">
-    							@{{pair[0].name}}
-    						</span>
-    						vs.
-    						<span data-ng-if="pair[1].won">
-    							[b]@{{pair[1].name}}[/b]
-    						</span>
-    						<span data-ng-if="!pair[1].won">
-    							@{{pair[1].name}}
-    						</span>
-    					</div>
-    					<div data-ng-if="!tagPlayers">
-    						<span data-ng-if="pair[0].won">
-    							[b]{{pair[0].name}}[/b]
-    						</span>
-    						<span data-ng-if="!pair[0].won">
-    							{{pair[0].name}}
-    						</span>
-    						vs.
-    						<span data-ng-if="pair[1].won">
-    							[b]{{pair[1].name}}[/b]
-    						</span>
-    						<span data-ng-if="!pair[1].won">
-    							{{pair[1].name}}
-    						</span>
-    					</div>
-    				</div>
-    				<br/>
     			</div>
-    		</div>
-    		<div>
-    			Tag Players: <input type="checkbox" ng-model="tagPlayers"></input>
-    		</div>
-		</div>
+    			<h2>BBCode for use on forum</h2>
+    			<div class="DivToScroll DivWithScroll">
+    				<div data-ng-repeat="round in pairings">
+    					[b]Round {{pairings.indexOf(round)+1}}[/b]<br/>
+    					</br>
+    					<div data-ng-repeat="pair in round">
+    						<div data-ng-if="tagPlayers">
+    							<span data-ng-if="pair[0].won">
+    								[b]@{{pair[0].name}}[/b]
+    							</span>
+    							<span data-ng-if="!pair[0].won">
+    								@{{pair[0].name}}
+    							</span>
+    							vs.
+    							<span data-ng-if="pair[1].won">
+    								[b]@{{pair[1].name}}[/b]
+    							</span>
+    							<span data-ng-if="!pair[1].won">
+    								@{{pair[1].name}}
+    							</span>
+    						</div>
+    						<div data-ng-if="!tagPlayers">
+    							<span data-ng-if="pair[0].won">
+    								[b]{{pair[0].name}}[/b]
+    							</span>
+    							<span data-ng-if="!pair[0].won">
+    								{{pair[0].name}}
+    							</span>
+    							vs.
+    							<span data-ng-if="pair[1].won">
+    								[b]{{pair[1].name}}[/b]
+    							</span>
+    							<span data-ng-if="!pair[1].won">
+    								{{pair[1].name}}
+    							</span>
+    						</div>
+    					</div>
+    					<br/>
+    				</div>
+    			</div>
+    			<div>
+    				Tag Players: <input type="checkbox" data-ng-model="tagPlayers"></input>
+    			</div>
+			</div>
 		</div>
 	</body>
 </html>
