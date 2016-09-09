@@ -142,6 +142,7 @@ app.controller('bracketCtrl', function($scope) {
 		$scope.arrayReset = true;
 		$scope.initial = true;
 		$scope.subMessage = '';
+		receivedBye = [];
 		currentRoundPlayerList = [];
 	}
 	
