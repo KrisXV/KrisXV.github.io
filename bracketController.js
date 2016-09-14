@@ -142,6 +142,7 @@ app.controller('bracketCtrl', function($scope) {
 		$scope.arrayReset = true;
 		$scope.initial = true;
 		$scope.subMessage = '';
+		$scope.incompleteMatches = false;
 		receivedBye = [];
 		currentRoundPlayerList = [];
 	}
@@ -234,9 +235,23 @@ app.controller('bracketCtrl', function($scope) {
 		for(i=0;i<currentRound.length;i++){
 			var pairing = currentRound[i];
 			if(pairing[0].name === $scope.subOut){
-				if(pairing[0].won){
+				//if player won that is being subbed out reset it
+				if(pairing[0].won && $scope.arrayReset){
 					$scope.players.splice($scope.players.indexOf(pairing[0].name), 1);
 					pairing[0].won = false;
+				}
+				//if player whos opponent is being subbed out won, reset it
+				if(pairing[1].won){
+					$scope.players.splice($scope.players.indexOf(pairing[1].name), 1);
+					pairing[1].won = false;
+				}
+				//if player being subbed out received a bye, change it on the list
+				if(receivedBye.indexOf(pairing[0].name) !== -1){
+					receivedBye[receivedBye.indexOf(pairing[0].name)] = $scope.subIn;
+				}
+				//if opponenet of player being subbed out received bye, remove bye
+				if(receivedBye.indexOf(pairing[1].name) !== -1){
+					receivedBye.splice(receivedBye.indexOf(pairing[1].name), 1);
 				}
 				if(!$scope.arrayReset) {
 					$scope.players[$scope.players.indexOf(pairing[0].name)] = $scope.subIn;
@@ -254,9 +269,23 @@ app.controller('bracketCtrl', function($scope) {
 				subSuccess = true;
 			}
 			if(pairing[1].name === $scope.subOut){
-				if(pairing[1].won){
+				//if player won that is being subbed out reset it
+				if(pairing[1].won && $scope.arrayReset){
 					$scope.players.splice($scope.players.indexOf(pairing[1].name), 1);
 					pairing[1].won = false;
+				}
+				//if player whos opponent is being subbed out won, reset it
+				if(pairing[0].won){
+					$scope.players.splice($scope.players.indexOf(pairing[0].name), 1);
+					pairing[0].won = false;
+				}
+				//if player being subbed out received a bye, change it on the list
+				if(receivedBye.indexOf(pairing[1].name) !== -1){
+					receivedBye[receivedBye.indexOf[pairing[1].name]] = $scope.subIn;
+				}
+				//if opponenet of player being subbed out received bye, remove bye
+				if(receivedBye.indexOf(pairing[0].name) !== -1){
+					receivedBye.splice(receivedBye.indexOf(pairing[0].name), 1);
 				}
 				if(!$scope.arrayReset) {
 					$scope.players[$scope.players.indexOf(pairing[1].name)] = $scope.subIn;
@@ -264,7 +293,6 @@ app.controller('bracketCtrl', function($scope) {
 				$scope.subMessage = $scope.subIn + ' has been subbed in for ' + $scope.subOut;
 				pairing[1].name = $scope.subIn;
 				if(currentRoundPlayerList.indexOf($scope.subOut) === -1){
-					console.log("penish");
 					currentRoundPlayerList.push($scope.subIn);
 				} else {
 					currentRoundPlayerList[currentRoundPlayerList.indexOf($scope.subOut)] = $scope.subIn;

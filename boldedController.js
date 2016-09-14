@@ -1,7 +1,6 @@
 var app = angular.module('boldedApp', ['textAngular']);
 app.controller('boldedCtrl', function($scope) {
 	$scope.pairings = "";
-	$scope.playersLinked = true;
 	$scope.newPairings = [];
 	$scope.pairingsGenerated = false;
 	
@@ -15,13 +14,16 @@ app.controller('boldedCtrl', function($scope) {
 	$scope.generatePairings = function(){
 		var temp1 = $scope.pairings.split("<!--StartFragment-->");
 		var temp2 = temp1[1].split("<!--EndFragment-->");
-		if(!$scope.playersLinked){
+		if(!$scope.pairings.includes('</a>')){
 			console.log(temp2[0]);
 			temp2[0] = temp2[0].replaceAll(' style="font-size: 13.3333px;text-align: left;"', "");
 			temp2[0] = temp2[0].replaceAll(' style="font-size: 13.3333px;text-align: left;float: none;"', "");
 			$scope.newPairings = temp2[0].split("<br/>");
 		} else {
 			temp2[0] = temp2[0].replaceAll('<span style="font-size: 13.3333px;text-align: left;float: none;"> vs </span>', "");
+			temp2[0] = temp2[0].replaceAll('<span style="font-size: 13.3333px;text-align: left;float: none;"> vs. </span>', "");
+			temp2[0] = temp2[0].replaceAll('<span style="font-size: 13.3333px;text-align: left;float: none;"> VS </span>', "");
+			temp2[0] = temp2[0].replaceAll('<span style="font-size: 13.3333px;text-align: left;float: none;"> VS. </span>', "");
 			temp2[0] = temp2[0].replaceAll('<br style="font-size: 13.3333px;text-align: left;"/>', "");
 			$scope.newPairings = temp2[0].split("</a>");
 			for(i=0; i<$scope.newPairings.length-1; i+=2){
