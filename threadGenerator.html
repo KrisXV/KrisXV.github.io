@@ -9,13 +9,28 @@
 		<div data-ng-controller="threadCtrl">
 		<div data-ng-show="initial">
 			Smogon Username: <input type="text" data-ng-model="username"><br/>
-			Tier: <input type="text" data-ng-model="tier"><br/>
-			Week: <input type="number" min="1" max="9" data-ng-model="week"><br/>
-			Tour Number: <input type="number" min="1" max="3" data-ng-model="tourNumber"><br/>
+			Tier:
+			<select data-ng-model="tier">
+				<option value="ORAS OU">ORAS OU</option>
+				<option value="BW OU">BW OU</option>
+				<option value="DPP OU">DPP OU</option>
+			</select><br/>
+			Week:
+			<select data-ng-model="week">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</select><br/>
 			<button data-ng-click="generateOP()">Generate OP for SmogTour</button>
 		</div>
 		<div data-ng-show="!initial">
-			<div>Title: <input style="input: { width: 120px }" type="text" data-ng-model="title"></div>
+			<div>Title: {{title}}
 			<div>
 				<blockquote><pre><code>
 [SIZE=6][B][COLOR=#ff0000]Post "in" to participate[/COLOR][/B]. Be aware that you can only join two tours this week![/SIZE]
@@ -24,7 +39,7 @@
 - Send a PM to "[B]{{username}}[/B]" on Smogtours or IRC when you win your match. Do NOT PM the host if you lost.
 - **[U]I PREFER BEING PM'd ON SmogTours, SO DO IT THERE IF YOU CAN INSTEAD OF ON IRC[/U]. **
 
-Additionally, please note that today's tour is { [B]{{tier}}[/B] }! The current ban list on Smogon University is in effect.
+Additionally, please note that today's tour is [B]{{tier}}[/B]! The current ban list on Smogon University is in effect.
 
 
 [B]General Smogon Tour rules[/B]:
@@ -51,7 +66,8 @@ Additionally, please note that today's tour is { [B]{{tier}}[/B] }! The current 
 				</code></pre></blockquote>
 			</div>
 			<button data-ng-click="reset()">Reset</button>
-		</div>
+			</div>
+			</div>
 		</div>
 	</body>
 </html>
