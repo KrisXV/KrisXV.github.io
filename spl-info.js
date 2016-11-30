@@ -5,12 +5,12 @@ app.controller('splInfoCtrl', function($scope) {
 	$scope.csvExport;
 	
 	$scope.generateCSV = function(){
-		partial = $scope.htmlInput.split('Player Name:');
+		partial = $scope.htmlInput.toLowerCase().split('player name:');
 		partial.forEach(function(p) {
-		    if(p.includes('Tiers Played:')){
-		    	partial2 = p.split('Tiers Played:');
+		    if(p.toLowerCase().includes('tiers played:')){
+		    	partial2 = p.toLowerCase().split('tiers played:');
 		    	playerName = partial2[0].trim();
-		    	partial3 = partial2[1].split('Timezone');
+		    	partial3 = partial2[1].split('timezone');
 		    	tiers = partial3[0].trim();
 		    	player = { 'Name': playerName }
 		    	if(tiers.toLowerCase().includes('sm ou') || tiers.toLowerCase().includes('sumo ou')){
@@ -73,5 +73,11 @@ app.controller('splInfoCtrl', function($scope) {
 		csv.unshift(header.join(','));
 		csv = csv.join('\r\n');
 		$scope.csvExport = csv;
+	}
+	
+	$scope.reset = function() {
+		$scope.htmlInput = "";
+		$scope.players = [];
+		$scope.csvExport;
 	}
 });
