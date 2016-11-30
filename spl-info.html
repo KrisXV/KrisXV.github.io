@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="spl-info.js"></script>
+	<head>
+		<title>SmogTour OP Generator</title>
+	</head>
+	<body data-ng-app="splInfoApp">
+		<div data-ng-controller="splInfoCtrl">
+			Copy and Paste Ctrl A here:<br/>
+			<textarea id="htmlInputTextArea" data-ng-model="htmlInput" data-ng-trim="false"></textarea><br/>
+			<button data-ng-click="generateCSV()">Generate SPL Playerlist</button><br/>
+			{{csvExport}}
+		</div>
+	</body>
+</html>

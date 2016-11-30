@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="urlController.js"></script>
+	<head>
+		<title>Bracket Maker</title>
+	</head>
+	<body data-ng-app="urlApp">
+		<div data-ng-controller="urlCtrl">
+		Smogon URL for Player List: <input data-ng-model="url"><br/>
+		<button data-ng-click="getHTML()">Generate Pairings</button>
+		<blockquote><pre><code>{{raw_html}}</code></pre></blockquote>
+		</div>
+	</body>
+</html>	

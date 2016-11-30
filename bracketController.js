@@ -358,10 +358,8 @@ app.controller('bracketCtrl', function($scope) {
 			return length = 4;
 		} else if(11<=arrayLength && arrayLength<=14){
 			return length = 6
-		} else if(15<=arrayLength && arrayLength<=16){
+		} else if(15<=arrayLength && arrayLength<=21){
 			return length = 8;
-		} else if(17<=arrayLength && arrayLength<=21){
-			return length = 9;
 		} else if(22<=arrayLength && arrayLength<=28){
 			return length = 12;
 		} else if(29<=arrayLength && arrayLength<=43){
