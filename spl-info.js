@@ -5,7 +5,7 @@ app.controller('splInfoCtrl', function($scope) {
 	$scope.csvExport;
 	
 	$scope.generateCSV = function(){
-		partial = $scope.htmlInput.toLowerCase().split('player name:');
+		partial = $scope.htmlInput.split(/(Player name:|Player Name:|player name:)/g);
 		partial.forEach(function(p) {
 		    if(p.toLowerCase().includes('tiers played:')){
 		    	partial2 = p.toLowerCase().split('tiers played:');
@@ -19,9 +19,9 @@ app.controller('splInfoCtrl', function($scope) {
 		    		player['SM OU'] = 'N';
 		    	}
 		    	if(tiers.toLowerCase().includes('sm ubers') || tiers.toLowerCase().includes('sumo ubers')){
-		    		player['SM UBERS'] = 'Y';
+		    		player['SM Ubers'] = 'Y';
 		    	} else { 
-		    		player['SM UBERS'] = 'N';
+		    		player['SM Ubers'] = 'N';
 		    	}
 		    	if(tiers.toLowerCase().includes('sm lc') || tiers.toLowerCase().includes('sumo lc')){
 		    		player['SM LC'] = 'Y';
