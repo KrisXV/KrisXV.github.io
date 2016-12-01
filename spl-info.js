@@ -10,8 +10,8 @@ app.controller('splInfoCtrl', function($scope) {
 			if(p.includes('Tiers Played') || p.includes('Tiers played') || p.includes('tiers played')){
 		    	partial2 = p.split(/(Tiers Played:|Tiers played:|tiers played:)/g);
 		    	playerName = partial2[0].trim();
-		    	partial3 = partial2[1].split(/(Timezone:|timezone:)/g);
-		    	tiers = partial3[0].trim();
+		    	partial3 = partial2[2].split(/(Timezone:|timezone:)/g);
+		    	tiers = partial3[0];
 		    	player = { 'Name': playerName }
 		    	if(tiers.toLowerCase().includes('sm ou') || tiers.toLowerCase().includes('sumo ou')){
 		    		player['SM OU'] = 'Y';
