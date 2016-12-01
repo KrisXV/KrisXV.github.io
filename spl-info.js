@@ -7,10 +7,10 @@ app.controller('splInfoCtrl', function($scope) {
 	$scope.generateCSV = function(){
 		partial = $scope.htmlInput.split(/(Player name:|Player Name:|player name:)/g);
 		partial.forEach(function(p) {
-		    if(p.toLowerCase().includes('tiers played:')){
-		    	partial2 = p.toLowerCase().split('tiers played:');
+			if(p.includes('Tiers Played') || p.includes('Tiers played') || p.includes('tiers played')){
+		    	partial2 = p.split(/(Tiers Played:|Tiers played:|tiers played:)/g);
 		    	playerName = partial2[0].trim();
-		    	partial3 = partial2[1].split('timezone');
+		    	partial3 = partial2[1].split(/(Timezone:|timezone:)/g);
 		    	tiers = partial3[0].trim();
 		    	player = { 'Name': playerName }
 		    	if(tiers.toLowerCase().includes('sm ou') || tiers.toLowerCase().includes('sumo ou')){
@@ -64,7 +64,7 @@ app.controller('splInfoCtrl', function($scope) {
 		    		player['RBY OU'] = 'N';
 		    	}
 		    	$scope.players.push(player)
-		    }
+			}
 		});
 		
 		const replacer = (key, value) => value === null ? '' : value;
