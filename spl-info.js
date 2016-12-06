@@ -27,7 +27,7 @@ app.controller('splInfoCtrl', function($scope) {
 		    	} else { 
 		    		player['SM LC'] = 'N';
 		    	}
-		    	if(line.toLowerCase().includes('doubles')){
+		    	if(tiers.toLowerCase().includes('doubles') || tiers.toLowerCase().includes('dubs')){
 		    		player['Doubles'] = 'Y';
 		    	} else { 
 		    		player['Doubles'] = 'N';
