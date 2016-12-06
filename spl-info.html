@@ -9,7 +9,7 @@
 		<div data-ng-controller="splInfoCtrl">
 			Copy and Paste Ctrl A here:<br/>
 			<textarea id="htmlInputTextArea" data-ng-model="htmlInput" data-ng-list="&#10;" data-ng-trim="false"></textarea><br/>
-			<button data-ng-click="generateCSV()">Generate SPL Playerlist</button><br/>
+			<button data-ng-click="generateCSV()">Generate SPL Playerlist</button> {{buttonCount}}<br/>
 			<button data-ng-click="reset()">Reset</button><br/>
 			{{csvExport}}
 		</div>

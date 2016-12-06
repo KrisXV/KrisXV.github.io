@@ -3,8 +3,10 @@ app.controller('splInfoCtrl', function($scope) {
 	$scope.htmlInput = [];
 	$scope.players = [];
 	$scope.csvExport;
+	$scope.buttonCount = 0
 	
 	$scope.generateCSV = function(){
+		buttonCount += 1;
 		var player;
 		$scope.htmlInput.forEach(function(line) {
 			if(line.includes('Player name:') || line.includes('Player Name:') || line.includes('player name')) {
@@ -27,7 +29,7 @@ app.controller('splInfoCtrl', function($scope) {
 		    	} else { 
 		    		player['SM LC'] = 'N';
 		    	}
-		    	if(tiers.toLowerCase().includes('doubles') || tiers.toLowerCase().includes('dubs')){
+		    	if(line.toLowerCase().includes('doubles') || line.toLowerCase().includes('dubs')){
 		    		player['Doubles'] = 'Y';
 		    	} else { 
 		    		player['Doubles'] = 'N';
