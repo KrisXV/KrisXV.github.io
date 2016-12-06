@@ -6,7 +6,7 @@ app.controller('splInfoCtrl', function($scope) {
 	$scope.buttonCount = 0
 	
 	$scope.generateCSV = function(){
-		buttonCount += 1;
+		$scope.buttonCount += 1;
 		var player;
 		$scope.htmlInput.forEach(function(line) {
 			if(line.includes('Player name:') || line.includes('Player Name:') || line.includes('player name')) {
