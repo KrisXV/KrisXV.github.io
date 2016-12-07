@@ -68,11 +68,11 @@ app.controller('splInfoCtrl', function($scope) {
 			if(!line.includes('Last edited:')){
 				if(line.includes(', Today') || line.includes(', Yesterday') || line.includes(', Monday') || line.includes(', Tuesday') || line.includes(', Wednesday')
 						 || line.includes('Thursday') || line.includes(', Friday') || line.includes(', Saturday') || line.includes(', Sunday')
-						 || line.includes(', January') || line.includes(', Febuary') || line.includes(', March') || line.includes(', April') || line.includes(', May')
-						 || line.includes(', June') || line.includes(', July') || line.includes(', August') || line.includes(', September')
-						 || line.includes(', October') || line.includes(', November') || line.includes(', December')) {
+						 || line.includes(', Jan') || line.includes(', Feb') || line.includes(', Mar') || line.includes(', Apr') || line.includes(', May')
+						 || line.includes(', Jun') || line.includes(', Jul') || line.includes(', Aug') || line.includes(', Sep')
+						 || line.includes(', Oct') || line.includes(', Nov') || line.includes(', Dec')) {
 					if(player){
-						player['Name'] = line.split(/(, Today|, Yesterday|, Monday|, Tuesday|, Wednesday|, Thursday|, Friday|, Saturday|, Sunday|, January|, Febuary|, March|, April|, May|, June|, July|, August|, September|, October|, November|, December)/g)[0];
+						player['Name'] = line.split(/(, Today|, Yesterday|, Monday|, Tuesday|, Wednesday|, Thursday|, Friday|, Saturday|, Sunday|, Jan|, Feb|, Mar|, Apr|, May|, Jun|, Jul|, Aug|, Sep|, Oct|, Nov|, Dec)/g)[0];
 						$scope.players.push(player);
 						player = null;
 					}
