@@ -9,11 +9,11 @@ app.controller('splInfoCtrl', function($scope) {
 		$scope.buttonCount += 1;
 		var player;
 		$scope.htmlInput.forEach(function(line) {
-			if(line.includes('Player name:') || line.includes('Player Name:') || line.includes('player name')) {
+			if(line.includes('Player name:') || line.includes('Player Name:') || line.includes('player name') || line.includes('Name:') || line.includes('name:')) {
 				var playerName = line.split(/(Player name:|Player Name:|player name:)/g)[2];
 				player = { 'Name': playerName }
 			}
-			if(line.includes('Tiers Played:') || line.includes('Tiers played:') || line.includes('tiers played:') || line.includes('Tiers:') || line.includes('tiers:')) {
+			if(player !== null && (line.includes('Tiers Played:') || line.includes('Tiers played:') || line.includes('tiers played:') || line.includes('Tiers:') || line.includes('tiers:'))) {
 				if(line.toLowerCase().includes('sm ou') || line.toLowerCase().includes('sumo ou')){
 		    		player['SM OU'] = 'Y';
 		    	} else { 
