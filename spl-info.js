@@ -68,7 +68,7 @@ app.controller('splInfoCtrl', function($scope) {
 			}
 			if(!line.includes('Last edited:')){
 				if(line.includes(', Today') || line.includes(', Yesterday') || line.includes(', Monday') || line.includes(', Tuesday') || line.includes(', Wednesday')
-						 || line.includes('Thursday') || line.includes(', Friday') || line.includes(', Saturday') || line.includes(', Sunday')
+						 || line.includes(', Thursday') || line.includes(', Friday') || line.includes(', Saturday') || line.includes(', Sunday')
 						 || line.includes(', Jan') || line.includes(', Feb') || line.includes(', Mar') || line.includes(', Apr') || line.includes(', May')
 						 || line.includes(', Jun') || line.includes(', Jul') || line.includes(', Aug') || line.includes(', Sep')
 						 || line.includes(', Oct') || line.includes(', Nov') || line.includes(', Dec')) {
