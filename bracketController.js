@@ -380,7 +380,7 @@ app.controller('bracketCtrl', function($scope) {
 			return length = 192;
 		} else if(461<=arrayLength && arrayLength<=691){
 			return length = 256;
-		} else if(692<=arrayLength<=921){
+		} else if(692<=arrayLength && arrayLength<=921){
 			return length = 384;
 		} else {
 			return length = 512;
