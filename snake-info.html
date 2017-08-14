@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="snake-info.js"></script>
+	<head>
+		<title>Snake Draft Playerslist Generator</title>
+	</head>
+	<body data-ng-app="snakeInfoApp">
+		<div data-ng-controller="snakeInfoCtrl">
+			Copy and Paste Ctrl A here:<br/>
+			<textarea id="htmlInputTextArea" data-ng-model="htmlInput" data-ng-list="&#10;" data-ng-trim="false"></textarea><br/>
+			<button data-ng-click="generateCSV()">Generate OUPL Playerlist</button> {{buttonCount}}<br/>
+			<button data-ng-click="reset()">Reset</button><br/>
+			{{csvExport}}<br/>
+			<br/>
+			{{dumbasses}}
+		</div>
+	</body>
+</html>
