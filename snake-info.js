@@ -14,42 +14,43 @@ app.controller('snakeInfoCtrl', function($scope) {
 			if(line.toLowerCase().includes('tiers played:') || line.toLowerCase().includes('tiers:') || 
 					line.toLowerCase().includes('tiers :') || line.toLowerCase().includes('tiers played :') ||
 					line.toLowerCase().includes('tier played:') || line.toLowerCase().includes('tier:')) {
+				
 				player = {'Name': ''}
-				if(line.toLowerCase().includes('ou') || line.toLowerCase().includes('sm ou')){
-		    		player['SM OU'] = 'Y';
-		    	} else { 
-		    		player['SM OU'] = 'N';
-		    	}
-		    	if(line.toLowerCase().includes('ubers')){
-		    		player['SM Ubers'] = 'Y';
-		    	} else { 
-		    		player['SM Ubers'] = 'N';
-		    	}
-		    	if(line.toLowerCase().includes('lc')){
-		    		player['SM LC'] = 'Y';
-		    	} else { 
-		    		player['SM LC'] = 'N';
-		    	}
-		    	if(line.toLowerCase().includes('uu')){
-		    		player['SM UU'] = 'Y';
-		    	} else { 
-		    		player['SM UU'] = 'N';
-		    	}
-		    	if(line.toLowerCase().includes('ru')){
-		    		player['SM RU'] = 'Y';
-		    	} else { 
-		    		player['SM RU'] = 'N';
-		    	}
-                if(line.toLowerCase().includes('nu')){
-		    		player['SM NU'] = 'Y';
-		    	} else { 
-		    		player['SM NU'] = 'N';
-		    	}
-                if(line.toLowerCase().includes('doubles')){
-		    		player['SM Doubles'] = 'Y';
-		    	} else { 
-		    		player['SM Doubles'] = 'N';
-		    	}
+				if((line.toLowerCase().includes('ou') || line.toLowerCase().includes('sm ou')) && !line.toLowerCase().includes('dou')){
+					player['SM OU'] = 'Y';
+				} else { 
+					player['SM OU'] = 'N';
+				}
+				if(line.toLowerCase().includes('ubers')){
+					player['SM Ubers'] = 'Y';
+				} else { 
+					player['SM Ubers'] = 'N';
+				}
+				if(line.toLowerCase().includes('lc')){
+					player['SM LC'] = 'Y';
+				} else { 
+					player['SM LC'] = 'N';
+				}
+				if(line.toLowerCase().includes('uu')){
+					player['SM UU'] = 'Y';
+				} else { 
+					player['SM UU'] = 'N';
+				}
+				if(line.toLowerCase().includes('ru')){
+					player['SM RU'] = 'Y';
+				} else { 
+					player['SM RU'] = 'N';
+				}
+				if(line.toLowerCase().includes('nu')){
+					player['SM NU'] = 'Y';
+				} else { 
+					player['SM NU'] = 'N';
+				}
+				if(line.toLowerCase().includes('doubles')){
+					player['SM Doubles'] = 'Y';
+				} else { 
+					player['SM Doubles'] = 'N';
+				}
 			}
 			if(!line.includes('Last edited:')){
 				if(line.includes(', Today') || line.includes(', Yesterday') || line.includes(', Monday') || line.includes(', Tuesday') || line.includes(', Wednesday')
