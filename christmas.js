@@ -18,7 +18,7 @@ app.controller('christmasCtrl', function($scope) {
       
       var currentPerson, firstPerson, nextPerson, currentFamily, first;
       
-      for(var j = 0; j<11, j++){
+      for(var j=0;j<11;j++) {
         if(i == 0){
            var startingFamily = getRandomInt(0, 3);
            if(startingFamily == 0){
