@@ -6,7 +6,7 @@ app.controller('christmasCtrl', function($scope) {
   $scope.pairings = [];
 	
 	$scope.generatePairings = function(){
-      $scope.pairints = [];
+      $scope.pairings = [];
       
 	    var irby2 = shuffleArray(irby);
       var thomas2 = shuffleArray(thomas);
@@ -46,7 +46,7 @@ app.controller('christmasCtrl', function($scope) {
            } else {
               nextPerson = first;
            }
-           pairings.push(currentPerson + ' > ' + nextPerson);
+           $scope.pairings.push(currentPerson + ' > ' + nextPerson);
         } else if(currentFamily == i){
           if(next == 0 && thomas2.length){
               nextPerson = pop(thomas2);
@@ -59,7 +59,7 @@ app.controller('christmasCtrl', function($scope) {
            } else {
               nextPerson = first;
            }
-           pairings.push(currentPerson + ' > ' + nextPerson);
+           $scope.pairings.push(currentPerson + ' > ' + nextPerson);
         } else {
           if(next == 0 && irby2.length){
               nextPerson = pop(irby2);
@@ -72,7 +72,7 @@ app.controller('christmasCtrl', function($scope) {
            } else {
               nextPerson = first;
            }
-           pairings.push(currentPerson + ' > ' + nextPerson);
+           $scope.pairings.push(currentPerson + ' > ' + nextPerson);
         }
       }
 	}
