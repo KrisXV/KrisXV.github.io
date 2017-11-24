@@ -16,7 +16,7 @@
 	<body data-ng-app="christmasApp">
 		<h1>Click the button</h1>
   		<div data-ng-controller="christmasCrtl">
-      		<div id="textArea" text-angular ng-model="pairings"></div>
+      		<div id="textArea" text-angular app-pairings="pairings"></div>
       		<button data-ng-click="generatePairings()">Generate Pairings</button>
 		{{pairings}}
   		</div>
