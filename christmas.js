@@ -78,7 +78,7 @@ app.controller('christmasCtrl', function($scope) {
         }
     }
 
-    var pop = funcion(arr) {
+    var pop = function(arr) {
         var last = arr[arr.length - 1];
         arr = arr.splice(-1, 1);
     }
