@@ -16,9 +16,10 @@ app.controller('christmasCtrl', function($scope) {
         var vaughn2 = shuffleArray(vaughn);
 
         var currentPerson, firstPerson, nextPerson, currentFamily, first;
+        var j = 0;
 
-        for (var j = 0; j < 11; j++) {
-            if (i == 0) {
+        while(j < 11){
+            if (j == 0) {
                 var startingFamily = getRandomInt(0, 3);
                 if (startingFamily == 0) {
                     first = currentPerson = pop(irby2)
@@ -31,6 +32,7 @@ app.controller('christmasCtrl', function($scope) {
                     currentFamily = v;
                 }
             }
+            j++;
 
             var next = Math.round(Math.random);
             if (currentFamily == t) {
