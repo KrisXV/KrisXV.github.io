@@ -84,11 +84,11 @@ app.controller('christmasCtrl', function($scope) {
     }
 
     var shuffleArray = function(array) {
-        for (var k = array.length - 1; k > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+        for (var k = array.length - 1; k > 0; k--) {
+            var h = Math.floor(Math.random() * (k + 1));
+            var temp = array[k];
+            array[k] = array[h];
+            array[h] = temp;
         }
     }
 
