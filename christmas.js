@@ -78,12 +78,12 @@ app.controller('christmasCtrl', function($scope) {
         }
     }
 
-    function pop(arr) {
+    var pop = funcion(arr) {
         var last = arr[arr.length - 1];
         arr = arr.splice(-1, 1);
     }
 
-    function shuffleArray(array) {
+    var shuffleArray = function(array) {
         for (var k = array.length - 1; k > 0; i--) {
             var j = Math.floor(Math.random() * (i + 1));
             var temp = array[i];
@@ -92,7 +92,7 @@ app.controller('christmasCtrl', function($scope) {
         }
     }
 
-    function getRandomInt(min, max) {
+    var getRandomInt = function(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
