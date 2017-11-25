@@ -1,4 +1,4 @@
-var app = angular.module('christmasApp', ['textAngular']);
+var app = angular.module('christmasApp', []);
 app.controller('christmasCtrl', function($scope) {
     let irby = ['Dan', 'Kathy', 'Alex', 'Josh', 'Leah'];
     let thomas = ['Scotty T', 'Susan', 'Evan', 'Collin'];
