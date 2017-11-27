@@ -16,57 +16,57 @@ app.controller('splInfoCtrl', function($scope) {
 					line.toLowerCase().includes('tier played:') || line.toLowerCase().includes('tier:')) {
 				
 				player = {'Name': ''}
-				if(line.toLowerCase().includes('sm ou') || line.toLowerCase().includes('sumo ou')){
+				if(line.toLowerCase().includes('sm ou') || line.toLowerCase().includes('sumo ou') || line.toLowerCase().includes('all')){
 		    			player['SM OU'] = 'Y';
 		    		} else { 
 		    			player['SM OU'] = 'N';
 		    	}
-		    	if(line.toLowerCase().includes('uu')){
+		    	if(line.toLowerCase().includes('uu') || line.toLowerCase().includes('all')){
 		    		player['SM UU'] = 'Y';
 		    	} else { 
 		    		player['SM UU'] = 'N';
 		    	}
-		    	if(line.toLowerCase().includes('ru')){
+		    	if(line.toLowerCase().includes('ru') || line.toLowerCase().includes('all')){
 		    		player['SM RU'] = 'Y';
 		    	} else { 
 		    		player['SM RU'] = 'N';
 		    	}
-			if(line.toLowerCase().includes('nu')){
+			if(line.toLowerCase().includes('nu') || line.toLowerCase().includes('all')){
 		    		player['SM NU'] = 'Y';
 		    	} else { 
 		    		player['SM NU'] = 'N';
 		    	}
-		    	if(line.toLowerCase().includes('doubles') || line.toLowerCase().includes('dubs')){
+		    	if(line.toLowerCase().includes('doubles') || line.toLowerCase().includes('dubs') || line.toLowerCase().includes('all')){
 		    		player['Doubles'] = 'Y';
 		    	} else { 
 		    		player['Doubles'] = 'N';
 		    	}
-		    	if(line.toLowerCase().includes('oras')){
+		    	if(line.toLowerCase().includes('oras') || line.toLowerCase().includes('all')){
 		    		player['ORAS OU'] = 'Y';
 		    	} else { 
 		    		player['ORAS OU'] = 'N';
 		    	}
-		    	if(line.toLowerCase().includes('bw')){
+		    	if(line.toLowerCase().includes('bw') || line.toLowerCase().includes('all')){
 		    		player['BW OU'] = 'Y';
 		    	} else { 
 		    		player['BW OU'] = 'N';
 		    	}
-		    	if(line.toLowerCase().includes('dpp')){
+		    	if(line.toLowerCase().includes('dpp') || line.toLowerCase().includes('all')){
 		    		player['DPP OU'] = 'Y';
 		    	} else { 
 		    		player['DPP OU'] = 'N';
 		    	}
-		    	if(line.toLowerCase().includes('adv')){
+		    	if(line.toLowerCase().includes('adv') || line.toLowerCase().includes('all')){
 		    		player['ADV OU'] = 'Y';
 		    	} else { 
 		    		player['ADV OU'] = 'N';
 		    	}
-		    	if(line.toLowerCase().includes('gsc')){
+		    	if(line.toLowerCase().includes('gsc') || line.toLowerCase().includes('all')){
 		    		player['GSC OU'] = 'Y';
 		    	} else { 
 		    		player['GSC OU'] = 'N';
 		    	}
-		    	if(line.toLowerCase().includes('rby')){
+		    	if(line.toLowerCase().includes('rby') || line.toLowerCase().includes('all')){
 		    		player['RBY OU'] = 'Y';
 		    	} else { 
 		    		player['RBY OU'] = 'N';
