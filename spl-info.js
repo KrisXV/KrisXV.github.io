@@ -14,21 +14,27 @@ app.controller('splInfoCtrl', function($scope) {
 			if(line.toLowerCase().includes('tiers played:') || line.toLowerCase().includes('tiers:') || 
 					line.toLowerCase().includes('tiers :') || line.toLowerCase().includes('tiers played :') ||
 					line.toLowerCase().includes('tier played:') || line.toLowerCase().includes('tier:')) {
+				
 				player = {'Name': ''}
 				if(line.toLowerCase().includes('sm ou') || line.toLowerCase().includes('sumo ou')){
-		    		player['SM OU'] = 'Y';
-		    	} else { 
-		    		player['SM OU'] = 'N';
+		    			player['SM OU'] = 'Y';
+		    		} else { 
+		    			player['SM OU'] = 'N';
 		    	}
-		    	if(line.toLowerCase().includes('sm ubers') || line.toLowerCase().includes('sumo ubers')){
-		    		player['SM Ubers'] = 'Y';
+		    	if(line.toLowerCase().includes('uu')){
+		    		player['SM UU'] = 'Y';
 		    	} else { 
-		    		player['SM Ubers'] = 'N';
+		    		player['SM UU'] = 'N';
 		    	}
-		    	if(line.toLowerCase().includes('sm lc') || line.toLowerCase().includes('sumo lc')){
-		    		player['SM LC'] = 'Y';
+		    	if(line.toLowerCase().includes('ru')){
+		    		player['SM RU'] = 'Y';
 		    	} else { 
-		    		player['SM LC'] = 'N';
+		    		player['SM RU'] = 'N';
+		    	}
+			if(line.toLowerCase().includes('nu')){
+		    		player['SM NU'] = 'Y';
+		    	} else { 
+		    		player['SM NU'] = 'N';
 		    	}
 		    	if(line.toLowerCase().includes('doubles') || line.toLowerCase().includes('dubs')){
 		    		player['Doubles'] = 'Y';
