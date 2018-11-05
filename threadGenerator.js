@@ -7,7 +7,7 @@ app.controller('threadCtrl', function($scope) {
 	$scope.tourNumber = 0;
 	$scope.title = "";
 	$scope.initial = true;
-	$scope.season = ""
+	$scope.season = "";
 	
 	$scope.generateOP = function() {
 		$scope.initial = false;
@@ -26,5 +26,6 @@ app.controller('threadCtrl', function($scope) {
 		$scope.tourNumber = 0;
 		$scope.title = "";
 		$scope.initial = true;
+		$scope.season = "";
 	}
 });
