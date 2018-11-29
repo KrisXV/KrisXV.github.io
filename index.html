@@ -4,15 +4,15 @@
 	<script src="js/bracketmaker/bracketController.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="bracket.css">
-	<script>
-		window.onbeforeunload = function (event) {
-			event.returnValue = 'test';
-		}; 
-	</script>
 	<head>
 		<title>Bracket Maker</title>
 	</head>
 	<body data-ng-app="bracketApp">
+		<script>
+			window.onbeforeunload = function (event) {
+				event.returnValue = 'test';
+			}; 
+		</script>
 		<div data-ng-controller="bracketCtrl">
 			<h1>Smogon Bracket Maker</h1>
 			<div data-ng-show="initial">
