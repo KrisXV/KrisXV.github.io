@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="bracket.css">
 	<script>
-		$(document).addEventListener('beforeunload', function (e) {
+		$(document).on('beforeunload', function (e) {
 			e.preventDefault();
 			e.returnValue = 'test';
 		}); 
