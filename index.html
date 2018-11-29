@@ -5,10 +5,10 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="bracket.css">
 	<script>
-		$(document).on('beforeunload', function (e) {
-			e.preventDefault();
-			e.returnValue = 'test';
-		}); 
+		document.onbeforeunload = function () {
+			document.preventDefault();
+			document.returnValue = 'test';
+		}; 
 	</script>
 	<head>
 		<title>Bracket Maker</title>
