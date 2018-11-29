@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<script src="bracketController.js"></script>
+	<script src="js/bracketmaker/bracketController.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="bracket.css">
 	<head>
@@ -15,8 +15,8 @@
 				Current Size: {{players.length}}<br/>
 				(Each Player Should Be On A Separate Line)<br/>
 				<textarea id="playerTextArea" data-ng-model="players" data-ng-list="&#10;" data-ng-trim="false"></textarea><br/>
-				First Come First Serve: <input type="checkbox" data-ng-model="useSimplePlayerList"></input><br/>
-				First 5/8ths Guaranteed: <input type="checkbox" data-ng-model="useSimplePlayerList" data-ng-true-value="false" data-ng-false-value="true"></input><br/>
+				First Come First Serve: <input type="checkbox" data-ng-model="useSimplePlayerList" /><br/>
+				First 5/8ths Guaranteed: <input type="checkbox" data-ng-model="useSimplePlayerList" data-ng-true-value="false" data-ng-false-value="true" /><br />
 			</div>
 			<div data-ng-show="!initial">
 				<div class="buttons">
@@ -87,8 +87,8 @@
         				</span>
         			</li>
     			</ul>
-				Sub In: <input type="text" data-ng-model="subIn"><br>
-				Sub Out: <input type="text" data-ng-model="subOut"><br>
+				Sub In: <input type="text" data-ng-model="subIn"><br />
+				Sub Out: <input type="text" data-ng-model="subOut"><br />
 				<button data-ng-click="makeSub()">Make Substitution</button> {{subMessage}}
     			<br/>
     			Number Of Current Pairings: {{pairings[pairings.length-1].length}}<br/>
@@ -99,8 +99,8 @@
     			<h2>BBCode for use on forum</h2>
     			<div class="DivToScroll DivWithScroll">
     				<div data-ng-repeat="round in pairings">
-    					[b]Round {{pairings.indexOf(round)+1}}[/b]<br/>
-    					</br>
+    					[b]Round {{pairings.indexOf(round)+1}}[/b]<br />
+    					<br />
     					<div data-ng-repeat="pair in round">
     						<div data-ng-if="tagPlayers">
     							<span data-ng-if="pair[0].won">
@@ -137,7 +137,7 @@
     				</div>
     			</div>
     			<div>
-    				Tag Players: <input type="checkbox" data-ng-model="tagPlayers"></input>
+    				Tag Players: <input type="checkbox" data-ng-model="tagPlayers" />
     			</div>
 			</div>
 		</div>

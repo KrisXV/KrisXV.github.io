@@ -10,7 +10,7 @@
   		<script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.9/textAngular.min.js'></script>
   		<link href="http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.9/textAngular.css" rel="stylesheet"/>
 
-  		<script src="boldedController.js"></script>
+  		<script src="js/bracketmaker/boldedController.js"></script>
   		<link rel="stylesheet" type="text/css" href="bolded.css">
 	</head>
 	<body data-ng-app="boldedApp">
@@ -18,7 +18,7 @@
   		<div data-ng-controller="boldedCtrl">
       		<div id="textArea" text-angular ng-model="pairings"></div>
       		<button data-ng-show="!pairingsGenerated" data-ng-click="generatePairings()">Generate Pairings</button>
-      		<button data-ng-click="clear()">Clear</button></br>
+      		<button data-ng-click="clear()">Clear</button><br />
   		</div>
 	</body>
 </html>

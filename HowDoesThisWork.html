@@ -4,20 +4,20 @@
   		<title>How does this work?</title>
   		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-		  <script src='https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.9/textAngular-rangy.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.9/textAngular-rangy.min.js'></script>
   		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
   		<script src='https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.9/textAngular-sanitize.min.js'></script>
   		<script src='https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.9/textAngular.min.js'></script>
   		<link href="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.9/textAngular.css" rel="stylesheet"/>
 
-  		<script src="christmas.js"></script>
+  		<script src="js/christmas.js"></script>
   		<link rel="stylesheet" type="text/css" href="bolded.css">
 	</head>
 	<body data-ng-app="christmasApp">
 		<h1>Click the button</h1>
   		<div data-ng-controller="christmasCrtl">
       			<div id="textArea" text-angular ng-model="pairings"></div>
-      				<button data-ng-click="generatePairings()">Generate Pairings</button></br>
+      			<button data-ng-click="generatePairings()">Generate Pairings</button><br />
 				{{pairings}}
   			</div>
 		</div>
