@@ -16,9 +16,7 @@
 	<body data-ng-app="boldedApp">
 		<h1>Copy and Paste Bolded Pairing Lists from Smogon.com</h1>
   		<div data-ng-controller="boldedCtrl">
-      		<div id="textArea" text-angular ng-model="pairings">
-				<input type="text" data-ng-model="pairings">
-			</div>
+			<textarea id="textArea" type="text" data-ng-model="pairings"></textarea>
       		<button data-ng-show="!pairingsGenerated" data-ng-click="generatePairings()">Generate Pairings</button>
       		<button data-ng-click="clear()">Clear</button><br />
   		</div>
