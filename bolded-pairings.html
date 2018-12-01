@@ -11,12 +11,14 @@
   		<link href="http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.9/textAngular.css" rel="stylesheet"/>
 
   		<script src="js/bracketmaker/boldedController.js"></script>
-  		<link rel="stylesheet" type="text/css" href="bolded.css">
+  		<link rel="stylesheet" href="bolded.css" type="text/css" />
 	</head>
 	<body data-ng-app="boldedApp">
 		<h1>Copy and Paste Bolded Pairing Lists from Smogon.com</h1>
   		<div data-ng-controller="boldedCtrl">
-      		<div id="textArea" text-angular ng-model="pairings"></div>
+      		<div id="textArea" text-angular ng-model="pairings">
+				<input type="text" data-ng-model="pairings">
+			</div>
       		<button data-ng-show="!pairingsGenerated" data-ng-click="generatePairings()">Generate Pairings</button>
       		<button data-ng-click="clear()">Clear</button><br />
   		</div>
