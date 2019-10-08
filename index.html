@@ -21,7 +21,6 @@
 				(Each Player Should Be On A Separate Line)<br/>
 				<textarea id="playerTextArea" data-ng-model="players" data-ng-list="&#10;" data-ng-trim="false"></textarea><br/>
 				First Come First Serve: <input type="checkbox" data-ng-model="useSimplePlayerList" /><br/>
-				First 5/8ths Guaranteed: <input type="checkbox" data-ng-model="useSimplePlayerList" data-ng-true-value="false" data-ng-false-value="true" /><br />
 			</div>
 			<div data-ng-show="!initial">
 				<div class="buttons">
@@ -31,17 +30,17 @@
 				<div data-ng-show="arrayReset">	
 					<h2>Winners:</h2>
 					<div class="DivToScroll DivWithScroll">
-						<ul>
+						<ol>
 							<li data-ng-repeat="x in players">{{x}}</li>
-						</ul>
+						</ol>
 					</div>
 				</div>
 				<div data-ng-show="!arrayReset">	
 					<h2>Players:</h2>
 					<div class="DivToScroll DivWithScroll">
-						<ul>
+						<ol>
 							<li data-ng-repeat="x in players">{{x}}</li>
-						</ul>
+						</ol>
 					</div>
 				</div>
 			</div>
@@ -75,7 +74,7 @@
     				</ul>
     			</div>
 				<h2>Pairings:</h2>
-				<ul>
+				<ol>
         			<li data-ng-repeat="pair in pairings[pairings.length-1]">
         				<span data-ng-if="pair[0].won">
         					<b>{{pair[0].name}}</b>
@@ -91,7 +90,7 @@
         					<a href="" data-ng-click="playerWon(pair[1], pair[0])">{{pair[1].name}}</a>
         				</span>
         			</li>
-    			</ul>
+    			</ol>
 				Sub In: <input type="text" data-ng-model="subIn"><br />
 				Sub Out: <input type="text" data-ng-model="subOut"><br />
 				<button data-ng-click="makeSub()">Make Substitution</button> {{subMessage}}
