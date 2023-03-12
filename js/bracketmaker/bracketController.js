@@ -345,6 +345,7 @@ app.controller('bracketCtrl', function ($scope) {
 		var sizes = function* () {
 			for (var i = 1;; i++) {
 				yield Math.pow(2, i);
+				yield Math.pow(2, i) + Math.pow(2, i - 1);
 			}
 		};
 
