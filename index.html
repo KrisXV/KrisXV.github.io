@@ -6,13 +6,18 @@
 	<link rel="stylesheet" type="text/css" href="bracket.css">
 	<head>
 		<title>Bracket Maker</title>
-	</head>
-	<body data-ng-app="bracketApp">
+		<!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js" type="text/javascript"></script>
+		<script src="js/bracketmaker/bracketmaker.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="bracket.css" -->
 		<script>
 			window.onbeforeunload = function (event) {
 				event.returnValue = 'test';
 			}; 
 		</script>
+	</head>
+	<body data-ng-app="bracketApp">
 		<div data-ng-controller="bracketCtrl">
 			<h1>Smogon Bracket Maker</h1>
 			<div data-ng-show="initial">

@@ -37,9 +37,9 @@ app.controller('bracketCtrl', function ($scope) {
 		$scope.initial = false;
 		//save initial player count
 		//figure out number of rounds that need to be played
-		determineLength($scope.players.length);
+		getTournamentSize($scope.players.length);
 		//check if player list is too large
-		if (length * 2 < $scope.players.length) {
+		if (length < $scope.players.length) {
 			if ($scope.useSimplePlayerList) {
 				removePlayersSimple();
 			} else {
@@ -47,7 +47,7 @@ app.controller('bracketCtrl', function ($scope) {
 			}
 		}
 		var playerList = angular.copy($scope.players);
-		var numberOfByes = length*2-playerList.length;
+		var numberOfByes = length-playerList.length;
 		var n = 1; //number of byes that have been used so far
 		//special case for round robin final
 		if (playerList.length === 3) {
@@ -55,7 +55,7 @@ app.controller('bracketCtrl', function ($scope) {
 			roundPairings.push([{name: playerList[1], won: false}, {name: playerList[2], won: false}]);
 			roundPairings.push([{name: playerList[2], won: false}, {name: playerList[0], won: false}]);
 		} else {
-			for (var i = 0; i < length; i++) {
+			for (var i = 0; i < length / 2; i++) {
 				if (playerList.length === numberOfByes) {
 					receivedBye = angular.copy(playerList);
 				}
@@ -309,18 +309,18 @@ app.controller('bracketCtrl', function ($scope) {
 	
 	//removes excess players from the list on a first come first serve basis
 	var removePlayersSimple = function () {
-		for (var i = $scope.players.length; i > length * 2; i--) {
+		for (var i = $scope.players.length; i > length; i--) {
 			$scope.discardedPlayers.push($scope.players.pop());
 		}
 	};
 	
 	//removes excess players on a first 5/8ths in last 3/8ths random basis
 	var removePlayersComplicated = function () {
-		if ($scope.players.length > length * 2) {
-			while ($scope.players.length > length * 2 * 5 / 8) {
+		if ($scope.players.length > length) {
+			while ($scope.players.length > length * 5 / 8) {
 				$scope.discardedPlayers.push($scope.players.pop());
 			}
-			while ($scope.players.length < length * 2) {
+			while ($scope.players.length < length) {
 				var x = Math.floor(Math.random() * $scope.discardedPlayers.length);
 				$scope.players.push($scope.discardedPlayers[x]);
 				$scope.discardedPlayers.splice(x, 1);
@@ -341,48 +341,44 @@ app.controller('bracketCtrl', function ($scope) {
 		}
 	};
 
-	//determines the length of the tournament depending on the amount of players in the round
-	var determineLength = function (arrayLength) {
+	var getTournamentSize = function (nPlayers) {
+		var sizes = function* () {
+			for (var i = 1;; i++) {
+				yield Math.pow(2, i);
+			}
+		};
+
+		var g = sizes();
+		var size = g.next().value;
+		for (var nextSize of g) {
+			if (!(nPlayers + Math.floor(nextSize * 0.25 - 1) >= nextSize)) break;
+			size = nextSize;
+		}
+		return length = size;
+	};
+
+	/* determines the length of the tournament depending on the amount of players in the round
+	var getTournamentSize = function (arrayLength) {
 		if (arrayLength === 0) {
 			return length = 0;
 		} else if (1 <= arrayLength && arrayLength <= 2) {
-			return length = 1;
-		} else if (3 === arrayLength) {
-			return length = 3;
-		} else if (4 <= arrayLength && arrayLength <= 5) {
 			return length = 2;
-		} else if (6 <= arrayLength && arrayLength <= 7) {
-			return length = 3;
-		} else if (8 <= arrayLength && arrayLength <= 10) {
+		} else if (3 <= arrayLength && arrayLength <= 5) {
 			return length = 4;
-		} else if (11 <= arrayLength && arrayLength <= 14) {
-			return length = 6
-		} else if (15 <= arrayLength && arrayLength <= 21) {
+		} else if (6 <= arrayLength && arrayLength <= 11) {
 			return length = 8;
-		} else if (22 <= arrayLength && arrayLength <= 28) {
-			return length = 12;
-		} else if (29 <= arrayLength && arrayLength <= 43) {
+		} else if (12 <= arrayLength && arrayLength <= 23) {
 			return length = 16;
-		} else if (44 <= arrayLength && arrayLength <= 57) {
-			return length = 24;
-		} else if (56 <= arrayLength && arrayLength <= 86) {
+		} else if (24 <= arrayLength && arrayLength <= 47) {
 			return length = 32;
-		} else if (87 <= arrayLength && arrayLength <= 115) {
-			return length = 48;
-		} else if (116 <= arrayLength && arrayLength <= 172) {
+		} else if (48 <= arrayLength && arrayLength <= 95) {
 			return length = 64;
-		} else if (173 <= arrayLength && arrayLength <= 230) {
-			return length = 96;
-		} else if (231 <= arrayLength && arrayLength <= 345) {
+		} else if (96 <= arrayLength && arrayLength <= 191) {
 			return length = 128;
-		} else if (346 <= arrayLength && arrayLength <= 460) {
-			return length = 192;
-		} else if (461 <= arrayLength && arrayLength <= 691) {
+		} else if (192 <= arrayLength && arrayLength <= 383) {
 			return length = 256;
-		} else if (692 <= arrayLength && arrayLength <= 921) {
-			return length = 384;
 		} else {
 			return length = 512;
 		}
-	};
+	}; */
 });
