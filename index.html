@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en-US">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="js/bracketmaker/bracketController.js"></script>
+	<script src="js/bracketmaker/dark-mode.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="bracket.css">
 	<head>
@@ -17,8 +19,15 @@
 			}; 
 		</script>
 	</head>
-	<body data-ng-app="bracketApp">
+	<body class="body" data-ng-app="bracketApp">
 		<div data-ng-controller="bracketCtrl">
+			<form>
+				<div>
+					<label>
+						<input id="dark-mode" type="checkbox" /> Dark mode?
+					</label>
+				</div>
+			</form>
 			<h1>Smogon Bracket Maker</h1>
 			<div data-ng-show="initial">
 				<h2>Players:</h2>

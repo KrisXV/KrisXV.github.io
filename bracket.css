@@ -31,6 +31,28 @@ div.DivToScroll {
     padding: 10px 7px 5px;
 }
 
+div.DivToScroll.dark {
+    background-color: #757575;
+    border: 1px solid #1f1f1f;
+    color: #cecece;
+}
+body.body.dark-body {
+    background: #464646;
+    color: #cecece;
+}
+body.body.dark-body textarea {
+    background: #d6d6d6;
+    color: #3B3C3E;
+    border: 1px solid #1f1f1f;
+    border-radius: 4px 0 4px 0;
+}
+body.body.dark-body button {
+    color: #3B3C3E;
+}
+body.body.dark-body a {
+    color: #ff993f;
+}
+
 div.DivWithScroll {
     height: 300px;
     width: 300px;
