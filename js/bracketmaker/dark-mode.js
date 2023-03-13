@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var ls = localStorage;
     if (ls.getItem('darkmode')) {
+        $('#dark-mode').prop('checked', true);
         $('.DivToScroll').addClass("dark");
         $('.body').addClass("dark-body");
     }
