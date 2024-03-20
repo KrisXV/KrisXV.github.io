@@ -10,7 +10,7 @@ app.controller('bracketCtrl', function ($scope) {
 	$scope.incompleteMatches = false;
 	$scope.discardedPlayers = [];
 	$scope.initialPlayerCount = 0;
-	$scope.tagPlayers = false;
+	$scope.tagPlayers = true;
 	$scope.useSimplePlayerList = true;
 	
 	var length = 0; //the number of pairings that need to be created

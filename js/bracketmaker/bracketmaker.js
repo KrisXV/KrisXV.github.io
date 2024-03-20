@@ -10,7 +10,7 @@ class Bracket {
         this.incompleteMatches = false;
         this.discardedPlayers = [];
         this.initialPlayerCount = 0;
-        this.tagPlayers = false;
+        this.tagPlayers = true;
         this.useSimplePlayerList = true;
         this.size = 0;
         this.receivedBye = [];
