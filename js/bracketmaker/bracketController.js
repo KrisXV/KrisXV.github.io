@@ -47,31 +47,24 @@ app.controller('bracketCtrl', function ($scope) {
 			}
 		}
 		var playerList = angular.copy($scope.players);
-		var numberOfByes = length-playerList.length;
+		var numberOfByes = length - playerList.length;
 		var n = 1; //number of byes that have been used so far
-		//special case for round robin final
-		if (playerList.length === 3) {
-			roundPairings.push([{name: playerList[0], won: false}, {name: playerList[1], won: false}]);
-			roundPairings.push([{name: playerList[1], won: false}, {name: playerList[2], won: false}]);
-			roundPairings.push([{name: playerList[2], won: false}, {name: playerList[0], won: false}]);
-		} else {
-			for (var i = 0; i < length / 2; i++) {
-				if (playerList.length === numberOfByes) {
-					receivedBye = angular.copy(playerList);
-				}
-				var j = Math.floor(Math.random() * playerList.length);
-				var player1 = playerList[j];
-				playerList.splice(j, 1);
-				var player2 = "";
-				if (playerList.length < numberOfByes) {
-					player2 = "Bye" + n++;
-					roundPairings.push([{name: player1, won: true}, {name: player2, won: false}]);
-				} else {
-					var k = Math.floor(Math.random() * playerList.length);
-					player2 = playerList[k];
-					playerList.splice(k, 1);
-					roundPairings.push([{name: player1, won: false}, {name: player2, won: false}]);
-				}
+		for (var i = 0; i < length / 2; i++) {
+			if (playerList.length === numberOfByes) {
+				receivedBye = angular.copy(playerList);
+			}
+			var j = Math.floor(Math.random() * playerList.length);
+			var player1 = playerList[j];
+			playerList.splice(j, 1);
+			var player2 = "";
+			if (playerList.length < numberOfByes) {
+				player2 = "Bye " + n++;
+				roundPairings.push([{name: player1, won: true}, {name: player2, won: false}]);
+			} else {
+				var k = Math.floor(Math.random() * playerList.length);
+				player2 = playerList[k];
+				playerList.splice(k, 1);
+				roundPairings.push([{name: player1, won: false}, {name: player2, won: false}]);
 			}
 		}
 		if ($scope.arrayReset) {
@@ -351,7 +344,7 @@ app.controller('bracketCtrl', function ($scope) {
 
 		for (var size of sizes()) {
 			if (nPlayers <= size) {
-				return size;
+				return length = size;
 			}
 		}
 
