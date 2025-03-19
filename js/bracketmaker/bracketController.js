@@ -350,7 +350,7 @@ app.controller('bracketCtrl', function ($scope) {
 		};
 
 		for (var size of sizes()) {
-			if (nPlayers >= nextSize) {
+			if (nPlayers <= size) {
 				return size;
 			}
 		}
