@@ -345,17 +345,18 @@ app.controller('bracketCtrl', function ($scope) {
 		var sizes = function* () {
 			for (var i = 1;; i++) {
 				yield Math.pow(2, i);
-				yield Math.pow(2, i) + Math.pow(2, i - 1);
+				// yield Math.pow(2, i) + Math.pow(2, i - 1);
 			}
 		};
 
-		var g = sizes();
-		var size = g.next().value;
-		for (var nextSize of g) {
-			if (!(nPlayers + Math.floor(nextSize * 0.25 - 1) >= nextSize)) break;
-			size = nextSize;
+		for (var size of sizes()) {
+			if (nPlayers >= nextSize) {
+				return size;
+			}
 		}
-		return length = size;
+
+		console.log('error')
+		throw new Error('Shouldn\'t happen');
 	};
 
 	/* determines the length of the tournament depending on the amount of players in the round
